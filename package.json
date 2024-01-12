@@ -1,0 +1,15 @@
+{
+  "name": "cypress-downloads-starter",
+  "version": "0.0.0",
+  "description": "A starter repository for testing the focusrite downloads site",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "cypress open"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.3.1"
+  }
+}
