@@ -23,3 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('getProductRanges', () => {
+    cy.readFile('utils/products.json').then((products) => {
+        const ranges = Object.keys(products);
+        return ranges;
+    })
+});
