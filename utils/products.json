@@ -48,21 +48,5 @@
   "Clarett+": {
     "url": "https://downloads.focusrite.com/focusrite/clarett",
     "products": []
-  },
-  "Clarett": {
-    "url": "https://downloads.focusrite.com/focusrite/clarett-0",
-    "products": []
-  },
-  "Saffire": {
-    "url": "https://downloads.focusrite.com/focusrite/saffire",
-    "products": []
-  },
-  "Focusrite Plugins": {
-    "url": "https://downloads.focusrite.com/focusrite/focusrite-plug-ins-0",
-    "products": []
-  },
-  "Legacy": {
-    "url": "https://downloads.focusrite.com/focusrite/legacy",
-    "products": []
   }
 }

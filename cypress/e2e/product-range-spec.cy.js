@@ -83,55 +83,57 @@ describe("The 'Focusrite Downloads' page", () => {
   });
   
 
-// describe('Navigation to Specific Product Range', () => {
-//   let productRanges;
+describe('Navigation to Specific Product Range', () => {
+  let productRanges;
 
-//   before(() => {
-//     cy.getProductRanges().then((ranges) => {
-//       productRanges = ranges;
-//     });
-//   });
+  before(() => {
+    cy.getProductRanges().then((ranges) => {
+      productRanges = ranges;
+    });
+  });
 
-//   beforeEach(() => {
-//     cy.visit('/');
-//   });
-
-//   it.only('should navigate to a new page for the specific product range', () => {
-//     productRanges.forEach(productRange => {
-//       cy.get(`:contains("${productRange}")`)
-//         .clickableTile()
-//         .each(($tile) => {
-//           cy.wrap($tile).click();
-//           cy.location('href').should('not.eq', '/');
-//           cy.get('#block-downloads-page-title')
-//             .contains(productRange + ' Downloads')
-//             .should('be.visible');
-//           cy.visit('/');
-//         });
-//     });
-//   });
-// });
-// });
-
-  
-describe('Iterate over Tiles and Visit Main Links', () => {
   beforeEach(() => {
     cy.visit('/');
   });
 
-  it.only('should visit the link in each tile', () => {
-    cy.get('.tile').each(($tile) => {
-      cy.wrap($tile).get('.main-link').invoke('attr', 'href').then((link) => {
-        cy.visit(link);
-        
-        // cy.get('#some-element-on-visited-page').should('exist');
-        
-        
-        
-        cy.visit('/');
-      });
+  it.only('should navigate to a new page for the specific product range', () => {
+    productRanges.forEach(productRange => {
+      cy.get(`:contains("${productRange}")`)
+        .clickableTile()
+        .each(($tile) => {
+          cy.wrap($tile).click();
+          cy.location('href').should('not.eq', '/');
+          cy.get('#block-downloads-page-title')
+            .contains(productRange + ' Downloads')
+            .should('be.visible');
+          cy.visit('/');
+        });
     });
   });
 });
-
 });
+
+  
+// describe('Iterate over Tiles and Visit Main Links', () => {
+//   beforeEach(() => {
+//     cy.visit('/');
+//   });
+
+//   it.only('should visit the link in each tile', () => {
+//     cy.get('.tile').each(($tile) => {
+//       cy.wrap($tile).get('.main-link')
+//       .invoke('attr', 'href')
+//       .then((link) => {
+//         cy.visit(link);
+        
+//         // cy.get('#some-element-on-visited-page').should('exist');
+        
+        
+        
+//         cy.visit('/');
+//       });
+//     });
+//   });
+// });
+
+
