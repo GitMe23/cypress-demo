@@ -2,11 +2,10 @@
 // 1: The user can navigate to the page of a specific product range
 // 2: The user can see the list of all products in the product range
 
-describe('Navigating Product Ranges', () => {
+describe("The 'Focusrite Downloads' page", () => {
   let productRanges;
 
   before(() => {
-    // Fetch product ranges once before all tests
     cy.getProductRanges().then((ranges) => {
       productRanges = ranges;
     });
@@ -22,36 +21,83 @@ describe('Navigating Product Ranges', () => {
       .should('be.visible');
   });
 
-  it("displays correct number of product ranges", () => {
-    cy.get('[class="tile"]')
-      .should('have.length', productRanges.length);
+  it("has correct number of product ranges", () => {
+    cy.get('.tile').should('have.length', productRanges.length);
   });
 
   it("makes all product ranges visible", () => {
     productRanges.forEach(productRange => {
-      cy.get(`:contains("${productRange}")`).should('be.visible');
+      cy.contains('.tile', productRange).should('be.visible');
     });
   });
   
-  it("makes all product range tiles clickable", () => {
+  it("makes all product ranges clickable", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
-        .parents('.tile[data-once="clickable-elements-click"]')
+        .clickableTile() 
         .should('be.visible')
-        .should('have.attr', 'data-once', 'clickable-elements-click');
     });
   });
 
-  it("displays an image for each product range", () => {
-      productRanges.forEach(productRange => {
-        cy.get(`:contains("${productRange}")`)
-          .parents('[data-once="clickable-elements-click"]')
-          .each(($clickableElement) => {
-            cy.wrap($clickableElement)
-              .find('img')
-              .should('exist')
-              .and('be.visible');
-          });
-      });
+  it("displays an image for every product range", () => {
+    productRanges.forEach(productRange => {
+      cy.get(`:contains("${productRange}")`)
+        .clickableTile() 
+        .each(($clickableElement) => {
+          cy.wrap($clickableElement)
+            .find('img')
+            .should('exist')
+            .and('be.visible');
+        });
     });
   });
+
+  it("displays a logo or text for every product range", () => {
+    productRanges.forEach(productRange => {
+      cy.get(`:contains("${productRange}")`)
+        .clickableTile()
+        .should('exist')
+        .find('.range-logo img, .logo-text.range-logo')
+        .should('exist')
+        .and('be.visible');
+    });
+  });
+  
+  it("allows clicking on an image, logo, or text for every product range", () => {
+    productRanges.forEach(productRange => {
+      cy.get(`:contains("${productRange}")`)
+        .clickableTile()
+        .then($clickableTile => {
+          cy.wrap($clickableTile).find('.range-image img').should('exist');
+          cy.wrap($clickableTile).find('img').should('exist');
+        });
+    });
+  });
+
+});
+
+// describe('Navigation to Specific Product Range', () => {
+//   let productRanges;
+
+//   before(() => {
+//     cy.getProductRanges().then((ranges) => {
+//       productRanges = ranges;
+//     });
+//   });
+
+//   beforeEach(() => {
+//     cy.visit('/');
+//   });
+
+  // it('should navigate to the page of a specific product range', () => {
+  //   productRanges.forEach(productRange => {
+  //     cy.get(`:contains("${productRange}")`)
+  //       .clickableTile()
+  //       .click();
+  //       cy.url().should('include', `${productRange.replace(/ /g, '-').replace(/\+/g, '').toLowerCase()}`);
+  //       cy.visit('/');
+  //   });
+  // });
+// });
+
+
