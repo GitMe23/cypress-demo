@@ -28,11 +28,10 @@ Cypress.Commands.add('getProductRanges', () => {
         const ranges = Object.keys(products);
         return ranges;
     })
+});
 
 Cypress.Commands.add('clickableTile', { prevSubject: 'element' }, (subject) => {
     return cy.wrap(subject)
       .parents('[data-once="clickable-elements-click"]');
-  });
-  
-
 });
+

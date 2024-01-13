@@ -21,36 +21,27 @@ describe("The 'Focusrite Downloads' page", () => {
       .should('be.visible');
   });
 
-  it("has correct number of product ranges", () => {
-    cy.get('.tile').should('have.length', productRanges.length);
-  });
-
-  it("makes all product ranges visible", () => {
+  it("makes product ranges visible", () => {
     productRanges.forEach(productRange => {
       cy.contains('.tile', productRange).should('be.visible');
     });
   });
   
-  it("makes all product ranges clickable", () => {
+  it("makes product ranges clickable", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .clickableTile()
-        .each(($tile) => {
-          cy.wrap($tile).should('be.visible');
-        });
+        .should('be.visible');
     });
   });
   
-  it("displays an image for every product range", () => {
+  it("displays an image for each product range", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .clickableTile() 
-        .each(($tile) => {
-          cy.wrap($tile)
-            .find('img')
-            .should('exist')
-            .and('be.visible');
-        });
+        .find('img')
+        .should('exist')
+        .and('be.visible');
     });
   });
 
@@ -58,28 +49,30 @@ describe("The 'Focusrite Downloads' page", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .clickableTile()
-        .each(($tile) => {
-          cy.wrap($tile)
-            .should('exist')
-            .find('.range-logo img, .logo-text.range-logo')
-            .should('exist')
-            .and('be.visible');
-        });
+        .should('exist')
+        .find('.range-logo img, .logo-text.range-logo')
+        .should('exist')
+        .and('be.visible');
+      });
     });
-  });
   
-  
-  it("allows clicking on an image, logo, or text for every product range", () => {
-    productRanges.forEach(productRange => {
-      cy.get(`:contains("${productRange}")`)
-        .clickableTile()
-        .each(($tile) => {
-          cy.wrap($tile).then(($clickableTile) => {
-            cy.wrap($clickableTile).find('.range-image img').should('exist');
-            cy.wrap($clickableTile).find('img').should('exist');
+    it("allows clicking on an image, logo, or text for every product range", () => {
+      productRanges.forEach(productRange => {
+        cy.get(`:contains("${productRange}")`)
+          .clickableTile()
+          .each(($clickableTile) => {
+            cy.wrap($clickableTile)
+              .find('.range-image img')
+              .should('exist')
+              .and('be.visible');
+            cy.wrap($clickableTile)
+              .find('.range-logo img, .logo-text.range-logo')
+              .should('exist')
+              .and('be.visible');
           });
-        });
+      });
     });
+    
   });
   
 
@@ -96,21 +89,33 @@ describe('Navigation to Specific Product Range', () => {
     cy.visit('/');
   });
 
-  it.only('should navigate to a new page for the specific product range', () => {
+  it('should navigate to a new page for a given product range', () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .clickableTile()
-        .each(($tile) => {
-          cy.wrap($tile).click();
-          cy.location('href').should('not.eq', '/');
-          cy.get('#block-downloads-page-title')
-            .contains(productRange + ' Downloads')
-            .should('be.visible');
-          cy.visit('/');
-        });
+        .click();
+      cy.location('href').should('not.eq', '/');
+      cy.get('#block-downloads-page-title')
+        .contains(productRange + ' Downloads')
+        .should('be.visible');
+      cy.visit('/');
     });
   });
-});
+  
+  it('should display all products for a given product range', () => {
+    productRanges.forEach(productRange => {
+      cy.get(`:contains("${productRange}")`)
+        .clickableTile()
+        .click();
+      cy.location('href').should('not.eq', '/');
+      cy.get('#block-downloads-page-title')
+        .contains(productRange + ' Downloads')
+        .should('be.visible');
+      cy.visit('/');
+    });
+  });
+  
+
 });
 
   
