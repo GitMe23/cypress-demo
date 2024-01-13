@@ -1,18 +1,26 @@
 {
-    "Scarlett 4th Gen": [
+  "Scarlett 4th Gen": {
+    "url": "https://downloads.focusrite.com/focusrite/scarlett-4th-gen",
+    "products": [
       "Scarlett Solo",
       "Scarlett 2i2",
       "Scarlett 4i4"
-    ],
-    "Scarlett 3rd Gen": [
+    ]
+  },
+  "Scarlett 3rd Gen": {
+    "url": "https://downloads.focusrite.com/focusrite/scarlett-3rd-gen",
+    "products": [
       "Scarlett Solo",
       "Scarlett 2i2",
       "Scarlett 4i4",
       "Scarlett 8i6",
       "Scarlett 18i8",
       "Scarlett 18i20"
-    ],
-    "Scarlett 2nd Gen": [
+    ]
+  },
+  "Scarlett 2nd Gen": {
+    "url": "https://downloads.focusrite.com/focusrite/scarlett-2nd-gen",
+    "products": [
       "Scarlett Solo",
       "Scarlett 2i2",
       "Scarlett 2i4",
@@ -21,29 +29,40 @@
       "Scarlett 18i20",
       "Scarlett OctoPre",
       "Scarlett OctoPre Dynamic"
-    ],
-    "Scarlett 1st Gen": [
-        "Scarlett Solo"
-    ],
-    "Vocaster": [
-
-    ],
-    "Clarett USB": [
-
-    ],
-    "Clarett+": [
-
-    ],
-    "Clarett": [
-
-    ],
-    "Saffire": [
-
-    ],
-    "Focusrite Plugins": [
-
-    ],
-    "Legacy": [
-
     ]
+  },
+  "Scarlett 1st Gen": {
+    "url": "https://downloads.focusrite.com/focusrite/scarlett-1st-generation",
+    "products": [
+      "Scarlett Solo"
+    ]
+  },
+  "Vocaster": {
+    "url": "https://downloads.focusrite.com/focusrite/vocaster",
+    "products": []
+  },
+  "Clarett USB": {
+    "url": "https://downloads.focusrite.com/focusrite/clarett-usb",
+    "products": []
+  },
+  "Clarett+": {
+    "url": "https://downloads.focusrite.com/focusrite/clarett",
+    "products": []
+  },
+  "Clarett": {
+    "url": "https://downloads.focusrite.com/focusrite/clarett-0",
+    "products": []
+  },
+  "Saffire": {
+    "url": "https://downloads.focusrite.com/focusrite/saffire",
+    "products": []
+  },
+  "Focusrite Plugins": {
+    "url": "https://downloads.focusrite.com/focusrite/focusrite-plug-ins-0",
+    "products": []
+  },
+  "Legacy": {
+    "url": "https://downloads.focusrite.com/focusrite/legacy",
+    "products": []
   }
+}

@@ -34,5 +34,5 @@ Cypress.Commands.add('clickableTile', { prevSubject: 'element' }, (subject) => {
       .parents('[data-once="clickable-elements-click"]');
   });
   
-  
+
 });
