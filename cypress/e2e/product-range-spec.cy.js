@@ -21,7 +21,7 @@ describe("The 'Focusrite Downloads' page", () => {
       .should('be.visible');
   });
 
-  it("makes product ranges visible", () => {
+  it.only("makes product ranges visible", () => {
     productRanges.forEach(productRange => {
       cy.contains('.tile', productRange).should('be.visible');
     });
@@ -129,24 +129,14 @@ describe('Navigation to Specific Product Range', () => {
       });
     });
 
-
-    describe('Fetching content from a website', () => {
-      it('should log content of each <span class="visually-hidden">', () => {
-        cy.visit('https://downloads.focusrite.com');
-        // Select all elements with class "visually-hidden"
-        cy.getTileNames
-        });
-      });
-    });
-
-    describe('Fetching tiles from a website', () => {
+    describe('Fetching product ranges', () => {
       beforeEach(() => {
         // Visit the base URL before each test
         cy.visit('/');
       });
       it.only('should log each tile span name', () => {
         // Use the custom command to get tile names
-        cy.getTileNames().then((tiles) => {
+        cy.getPageProductRanges().then((tiles) => {
           // Log each element of the array
           tiles.forEach((tile) => {
             cy.log(tile);
@@ -156,5 +146,4 @@ describe('Navigation to Specific Product Range', () => {
           });
         });
     
-
-
+      });

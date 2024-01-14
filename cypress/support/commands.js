@@ -42,14 +42,18 @@ Cypress.Commands.add('getProductRangePath', (productRange) => {
     });
 });
   
-Cypress.Commands.add('getTileNames', () => {
+Cypress.Commands.add('getPageProductRanges', () => {
     const tiles = [];
-    cy.get('div.tile div.range div.logo.range-logo a.main-link span.visually-hidden').each(($span) => {
-      tiles.push($span.text());
-    }).then(() => {
-      return tiles;
-    });
+    cy.get('div.tile div.range div.logo.range-logo a.main-link span.visually-hidden')
+      .not(':contains("Legacy")')
+      .each(($span) => {
+        tiles.push($span.text());
+      })
+      .then(() => {
+        return tiles;
+      });
   });
+  
 
   
     
