@@ -132,7 +132,7 @@ describe('Navigation to Specific Product Range', () => {
 
     describe('Fetching content from a website', () => {
       it.only('should log content of each <span class="visually-hidden">', () => {
-        cy.visit('https://downloads.focusrite.com/focusrite/scarlett-4th-gen');
+        cy.visit('https://downloads.focusrite.com/focusrite/clarett');
     
         // Select all elements with class "visually-hidden"
         cy.get('span.visually-hidden').each(($span) => {
