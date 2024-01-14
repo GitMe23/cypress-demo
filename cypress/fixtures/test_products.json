@@ -40,7 +40,6 @@
   "Scarlett 1st Gen": {
     "path": "/focusrite/scarlett-1st-generation",
     "products": [
-      "Scarlett Solo 1st Gen",
       "Scarlett Solo Studio 1st Gen",
       "Scarlett 2i2 1st Gen",
       "Scarlett 2i2 Studio 1st Gen",
@@ -53,14 +52,13 @@
   "Vocaster": {
     "path": "/focusrite/vocaster",
     "products": [
-      "Scarlett Solo 1st Gen",
-      "Scarlett Solo Studio 1st Gen",
-      "Scarlett 2i2 1st Gen",
-      "Scarlett 2i2 Studio 1st Gen",
-      "Scarlett 2i4 1st Gen",
-      "Scarlett 6i6 1st Gen",
-      "Scarlett 18i8 1st Gen",
-      "Scarlett 18i20 1st Gen"
+      "Vocaster One",
+      "Vocaster Two",
+      "Vocaster One Studio",
+      "Vocaster Two Studio",
+      "Vocaster DM1",
+      "Vocaster HP60v",
+      "Vocaster DM14v"
     ]
   },
   "Clarett USB": {

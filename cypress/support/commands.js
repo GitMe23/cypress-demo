@@ -41,6 +41,12 @@ Cypress.Commands.add('getProductRangePath', (productRange) => {
       return products[productRange].path;
     });
 });
+Cypress.Commands.add('getProductList', (productRange) => {
+    return cy.fixture('../fixtures/test_products.json').then((productsInRange) => {
+      return productsInRange[productRange].products;
+    });
+  });
+  
   
 Cypress.Commands.add('getPageTiles', () => {
     const tiles = [];

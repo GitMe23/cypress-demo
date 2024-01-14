@@ -120,16 +120,26 @@ describe('Navigating to each downloads page', () => {
     });
   });
 
-  it('displays a list of all products for a given product range', () => {
+  it.only('displays a list of all products for a given product range', () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
         .click();
-        
-      // make sure every product in range exists and is visible
-      // Add your assertions for product visibility here
-
+      
+        cy.fixture('../fixtures/test_products.json').then((products) => {
+          const productList = products[productRange].products;
+    
+          // Ensure each product in the list is in tiles and is visible
+          productList.forEach((product) => {
+            cy.get(`:contains("${product}")`).should('be.visible');
+            cy.getPageTiles().should('include', product);
+          });
+        });
+      
       cy.visit('/');
     });
   });
+  
+  
 });
+
