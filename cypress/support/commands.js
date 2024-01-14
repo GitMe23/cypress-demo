@@ -24,12 +24,12 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('getProductRanges', () => {
-    cy.fixture('../fixtures/test_products.json').then((data) => {
-        const ranges = Object.keys(products);
-        return ranges;
-    })
-});
+// Cypress.Commands.add('getProductRanges', () => {
+//     cy.fixture('../fixtures/test_products.json').then((products) => {
+//         const ranges = Object.keys(products);
+//         return ranges;
+//     })
+// });
 
 Cypress.Commands.add('getClickableTile', { prevSubject: 'element' }, (subject) => {
     return cy.wrap(subject)
@@ -37,30 +37,30 @@ Cypress.Commands.add('getClickableTile', { prevSubject: 'element' }, (subject) =
 });
 
 Cypress.Commands.add('getProductRangePath', (productRange) => {
-    return cy.readFile('test_data/zextended.json').then((products) => {
+    cy.fixture('../fixtures/test_products.json').then((products) => {
       return products[productRange].path;
     });
 });
   
-Cypress.Commands.add('getPageProductRanges', () => {
+Cypress.Commands.add('getPageTiles', () => {
     const tiles = [];
-    cy.get('div.tile div.range div.logo.range-logo a.main-link span.visually-hidden, div.tile div.range div.logo-text.range-logo a.main-link span.visually-hidden')
-      .filter(':not(:contains("Legacy"))')
-      .each(($span) => {
-        const modifiedProductRanges = $span.text().replace(/(?<!\S)Clarett(?! \+| USB)(?!\S)/g, 'Clarett 0');
-        tiles.push(modifiedProductRanges);
-      })
-      .then(() => {
-        return tiles;
+    cy.get('[data-once="clickable-elements-click-event"]')
+      .each(($element) => {
+        tiles.push($element.text().trim());
       });
+    return cy.wrap(tiles);
   });
   
-  
-  Cypress.Commands.add('loadTestProductRanges', () => {
-    return cy.fixture('../fixtures/test_products.json').then((data) => {
-      return Object.keys(data);
-    });
+//   Cypress.Commands.add('loadTestProductRanges', () => {
+//     return cy.fixture('../fixtures/test_products.json').then((data) => {
+//       return Object.keys(data);
+//     });
+//   });
+
+  Cypress.Commands.add('loadProducts', () => {
+    return cy.fixture('../fixtures/test_products.json');
   });
+  
 
   
     

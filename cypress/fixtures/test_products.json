@@ -79,19 +79,5 @@
       "Clarett+ 8Pre",
       "Clarett+ Octopre"
     ]
-  },
-    "Saffire": {
-      "path": "/focusrite/saffire",
-      "products": [
-        "Saffire 6 USB",
-        "Saffire Pro 14",
-        "Saffire Pro 24",
-        "Saffire Pro 24 DSP",
-        "Saffire Pro 26",
-        "Saffire Pro 40",
-        "Liquid Saffire 56",
-        "OctoPre MKII",
-        "OctoPre MKII Dynamic"
-      ]
-    }
+   }
   }
