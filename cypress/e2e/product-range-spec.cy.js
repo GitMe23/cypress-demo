@@ -30,7 +30,7 @@ describe("The 'Focusrite Downloads' page", () => {
   it("makes product ranges clickable", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
-        .clickableTile()
+        .getProductRangeTile()
         .should('be.visible');
     });
   });
@@ -38,7 +38,7 @@ describe("The 'Focusrite Downloads' page", () => {
   it("displays an image for each product range", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
-        .clickableTile() 
+        .getProductRangeTile() 
         .find('img')
         .should('exist')
         .and('be.visible');
@@ -48,7 +48,7 @@ describe("The 'Focusrite Downloads' page", () => {
   it("displays a logo or text for every product range", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
-        .clickableTile()
+        .getProductRangeTile()
         .should('exist')
         .find('.range-logo img, .logo-text.range-logo')
         .should('exist')
@@ -59,13 +59,13 @@ describe("The 'Focusrite Downloads' page", () => {
     it("allows clicking on an image, logo, or text for every product range", () => {
       productRanges.forEach(productRange => {
         cy.get(`:contains("${productRange}")`)
-          .clickableTile()
-          .each(($clickableTile) => {
-            cy.wrap($clickableTile)
+          .getProductRangeTile()
+          .each(($getProductRangeTile) => {
+            cy.wrap($getProductRangeTile)
               .find('.range-image img')
               .should('exist')
               .and('be.visible');
-            cy.wrap($clickableTile)
+            cy.wrap($getProductRangeTile)
               .find('.range-logo img, .logo-text.range-logo')
               .should('exist')
               .and('be.visible');
@@ -89,10 +89,10 @@ describe('Navigation to Specific Product Range', () => {
     cy.visit('/');
   });
 
-  it('should navigate to a new page for a given product range', () => {
+  it('should navigate to a downloads page for a every product range', () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
-        .clickableTile()
+        .getProductRangeTile()
         .click();
       cy.location('href').should('not.eq', '/');
       cy.get('#block-downloads-page-title')
@@ -102,20 +102,28 @@ describe('Navigation to Specific Product Range', () => {
     });
   });
   
-  it('should display all products for a given product range', () => {
-    productRanges.forEach(productRange => {
-      cy.get(`:contains("${productRange}")`)
-        .clickableTile()
-        .click();
-      cy.location('href').should('not.eq', '/');
-      cy.get('#block-downloads-page-title')
-        .contains(productRange + ' Downloads')
-        .should('be.visible');
-      cy.visit('/');
+  it.only('should display all products for a given product range', () => {
+    cy.getProductRanges().then(productRanges => {
+      productRanges.forEach(productRange => {
+        cy.get(`:contains("${productRange}")`)
+          .getProductRangeTile()
+          .click();
+  
+        cy.location('href').should('not.eq', '/');
+  
+        cy.getProductRangePath(productRange).then(productRangePath => {
+          // Ensure the current URL is equal to the full path
+          cy.url().should('eq', Cypress.config().baseUrl + productRangePath);
+        });
+  
+        cy.visit('/');
+      });
     });
   });
   
-
+  
+  
+  
 });
 
   

@@ -30,8 +30,17 @@ Cypress.Commands.add('getProductRanges', () => {
     })
 });
 
-Cypress.Commands.add('clickableTile', { prevSubject: 'element' }, (subject) => {
+Cypress.Commands.add('getProductRangeTile', { prevSubject: 'element' }, (subject) => {
     return cy.wrap(subject)
       .parents('[data-once="clickable-elements-click"]');
 });
+
+Cypress.Commands.add('getProductRangePath', (productRange) => {
+    return cy.readFile('utils/products.json').then((products) => {
+      return products[productRange].path;
+    });
+  });
+  
+  
+  
 
