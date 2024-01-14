@@ -41,12 +41,12 @@ Cypress.Commands.add('getProductRangePath', (productRange) => {
     return products[productRange].path;
   });
 });
+
 Cypress.Commands.add('getProductList', (productRange) => {
   return cy.fixture('../fixtures/test_products.json').then((productsInRange) => {
     return productsInRange[productRange].products;
   });
 });
-
 
 Cypress.Commands.add('getPageTiles', () => {
   const tiles = [];
@@ -65,6 +65,37 @@ Cypress.Commands.add('getPageTiles', () => {
 
 Cypress.Commands.add('loadProducts', () => {
   return cy.fixture('../fixtures/test_products.json');
+});
+
+// commands.js
+
+Cypress.Commands.add('getClickableTilesAndVerifyLinks', () => {
+  cy.get('[data-once="clickable-elements-click"]').as('clickableTiles');
+
+  // Create an array to store href links
+  const linksArray = [];
+
+  cy.get('@clickableTiles').each(($tile) => {
+    // Extract the href link from each tile
+    cy.wrap($tile).invoke('attr', 'href').then((link) => {
+      linksArray.push(link);
+    });
+  });
+
+  // Log the array of links for debugging
+  cy.log('Links Array:', linksArray);
+
+  // Iterate over the links array and perform verifications
+  linksArray.forEach((link) => {
+    // Visit each link
+    cy.visit(link);
+
+    // Verify the existence of the element on the current page
+    cy.get('div.software-links:nth-child(1)').should('exist');
+
+    // Go back to the main page for the next iteration
+    cy.go('back');
+  });
 });
 
 
