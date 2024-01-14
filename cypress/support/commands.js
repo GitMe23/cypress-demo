@@ -32,43 +32,42 @@
 // });
 
 Cypress.Commands.add('getClickableTile', { prevSubject: 'element' }, (subject) => {
-    return cy.wrap(subject)
-      .parents('[data-once="clickable-elements-click"]');
+  return cy.wrap(subject)
+    .parents('[data-once="clickable-elements-click"]');
 });
 
 Cypress.Commands.add('getProductRangePath', (productRange) => {
-    cy.fixture('../fixtures/test_products.json').then((products) => {
-      return products[productRange].path;
-    });
+  cy.fixture('../fixtures/test_products.json').then((products) => {
+    return products[productRange].path;
+  });
 });
 Cypress.Commands.add('getProductList', (productRange) => {
-    return cy.fixture('../fixtures/test_products.json').then((productsInRange) => {
-      return productsInRange[productRange].products;
-    });
+  return cy.fixture('../fixtures/test_products.json').then((productsInRange) => {
+    return productsInRange[productRange].products;
   });
-  
-  
+});
+
+
 Cypress.Commands.add('getPageTiles', () => {
-    const tiles = [];
-    cy.get('[data-once="clickable-elements-click-event"]')
-      .each(($element) => {
-        tiles.push($element.text().trim());
-      });
-    return cy.wrap(tiles);
-  });
-  
+  const tiles = [];
+  cy.get('[data-once="clickable-elements-click-event"]')
+    .each(($element) => {
+      tiles.push($element.text().trim());
+    });
+  return cy.wrap(tiles);
+});
+
 //   Cypress.Commands.add('loadTestProductRanges', () => {
 //     return cy.fixture('../fixtures/test_products.json').then((data) => {
 //       return Object.keys(data);
 //     });
 //   });
 
-  Cypress.Commands.add('loadProducts', () => {
-    return cy.fixture('../fixtures/test_products.json');
-  });
-  
+Cypress.Commands.add('loadProducts', () => {
+  return cy.fixture('../fixtures/test_products.json');
+});
 
-  
-    
+
+
   
 
