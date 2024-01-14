@@ -23,23 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
 Cypress.Commands.add('getProductRanges', () => {
-    cy.readFile('utils/products.json').then((products) => {
+    cy.readFile('test_data/focusrite_products_example.json').then((products) => {
         const ranges = Object.keys(products);
         return ranges;
     })
 });
 
-Cypress.Commands.add('getProductRangeTile', { prevSubject: 'element' }, (subject) => {
+Cypress.Commands.add('getClickableTile', { prevSubject: 'element' }, (subject) => {
     return cy.wrap(subject)
       .parents('[data-once="clickable-elements-click"]');
 });
 
 Cypress.Commands.add('getProductRangePath', (productRange) => {
-    return cy.readFile('utils/products.json').then((products) => {
+    return cy.readFile('test_data/focusrite_products_example.json').then((products) => {
       return products[productRange].path;
     });
-  });
+});
   
   
   
