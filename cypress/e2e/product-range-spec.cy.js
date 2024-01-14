@@ -83,7 +83,7 @@ describe("The 'Focusrite Downloads' page", () => {
 });
 
 
-describe('Navigating to each downloads page', () => {
+describe('Navigating to each downloads page (Use Case 1)', () => {
   let productRanges;
 
   before(() => {
@@ -120,7 +120,7 @@ describe('Navigating to each downloads page', () => {
     });
   });
 
-  it.only('displays a list of all products for a given product range', () => {
+  it('displays a list of all products for a given product range', () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
@@ -128,8 +128,7 @@ describe('Navigating to each downloads page', () => {
       
         cy.fixture('../fixtures/test_products.json').then((products) => {
           const productList = products[productRange].products;
-    
-          // Ensure each product in the list is in tiles and is visible
+          // Ensure each product in test fixture is in a tile on page
           productList.forEach((product) => {
             cy.get(`:contains("${product}")`).should('be.visible');
             cy.getPageTiles().should('include', product);
@@ -140,5 +139,16 @@ describe('Navigating to each downloads page', () => {
     });
   });
   
-  
+  it('links to the correct page for each product range', () => {
+    productRanges.forEach(productRange => {
+      cy.get(`:contains("${productRange}")`)
+        .getClickableTile()
+        .click();
+      cy.getProductRangePath(productRange).then(productRangePath => {
+        cy.url().should('eq', Cypress.config().baseUrl + productRangePath);
+      });
+      cy.visit('/');
+    });
+  });
+
 });
