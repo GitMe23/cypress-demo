@@ -1,0 +1,117 @@
+{
+  "Scarlett 4th Gen": {
+    "path": "/focusrite/scarlett-4th-gen",
+    "products": [
+      "Scarlett Solo 4th Gen",
+      "Scarlett Solo 4th Gen Studio",
+      "Scarlett 2i2 4th Gen",
+      "Scarlett 2i2 4th Gen Studio",
+      "Scarlett 4i4 4th Gen"
+    ]
+  },
+  "Scarlett 3rd Gen": {
+    "path": "/focusrite/scarlett-3rd-gen",
+    "products": [
+      "Scarlett Solo 3rd Gen",
+      "Scarlett Solo 3rd Gen Studio",
+      "Scarlett 2i2 3rd Gen",
+      "Scarlett 2i2 3rd Gen Studio",
+      "Scarlett 4i4 3rd gen",
+      "Scarlett 8i6 3rd gen",
+      "Scarlett 18i8 3rd gen",
+      "Scarlett 18i20 3rd gen"
+    ]
+  },
+  "Scarlett 2nd Gen": {
+    "path": "/focusrite/scarlett-2nd-gen",
+    "products": [
+      "Scarlett Solo 2nd Gen",
+      "Scarlett Solo Studio 2nd Gen",
+      "Scarlett 2i2 2nd Gen",
+      "Scarlett 2i2 Studio 2nd Gen",
+      "Scarlett 2i4 2nd Gen",
+      "Scarlett 6i6 2nd Gen",
+      "Scarlett 18i8 2nd Gen",
+      "Scarlett 18i20 2nd Gen",
+      "Scarlett OctoPre",
+      "Scarlett OctoPre Dynamic"
+    ]
+  },
+  "Scarlett 1st Gen": {
+    "path": "/focusrite/scarlett-1st-generation",
+    "products": [
+      "Scarlett Solo 1st Gen",
+      "Scarlett Solo Studio 1st Gen",
+      "Scarlett 2i2 1st Gen",
+      "Scarlett 2i2 Studio 1st Gen",
+      "Scarlett 2i4 1st Gen",
+      "Scarlett 6i6 1st Gen",
+      "Scarlett 18i8 1st Gen",
+      "Scarlett 18i20 1st Gen"
+    ]
+  },
+  "Vocaster": {
+    "path": "/focusrite/vocaster",
+    "products": [
+      "Scarlett Solo 1st Gen",
+      "Scarlett Solo Studio 1st Gen",
+      "Scarlett 2i2 1st Gen",
+      "Scarlett 2i2 Studio 1st Gen",
+      "Scarlett 2i4 1st Gen",
+      "Scarlett 6i6 1st Gen",
+      "Scarlett 18i8 1st Gen",
+      "Scarlett 18i20 1st Gen"
+    ]
+  },
+  "Clarett USB": {
+    "path": "/focusrite/clarett-usb",
+    "products": [
+      "Clarett 2Pre USB",
+      "Clarett 4Pre USB",
+      "Clarett 8Pre USB"
+    ]
+  },
+  "Clarett+": {
+    "path": "/focusrite/clarett",
+    "products": [
+      "Clarett+ 2Pre",
+      "Clarett+ 4Pre",
+      "Clarett+ 8Pre",
+      "Clarett+ Octopre"
+    ]
+  },
+  "Clarett": {
+    "path": "/focusrite/clarett-0",
+    "products": [
+      "Clarett 2Pre",
+      "Clarett 4Pre",
+      "Clarett 8Pre",
+      "Clarett 8PreX",
+      "Clarett OctoPre"
+    ]
+  },
+  {
+    "Saffire": {
+      "path": "/focusrite/saffire",
+      "products": [
+        "Saffire 6 USB",
+        "Saffire Pro 14",
+        "Saffire Pro 24",
+        "Saffire Pro 24 DSP",
+        "Saffire Pro 26",
+        "Saffire Pro 40",
+        "Liquid Saffire 56",
+        "OctoPre MKII",
+        "OctoPre MKII Dynamic"
+      ]
+    }
+  },
+  {
+    "Focusrite Plugins": {
+      "path": "/focusrite/focusrite-plug-ins-0",
+      "products": [
+        "Red Plug-In Suite"
+      ]
+    }
+  }
+}

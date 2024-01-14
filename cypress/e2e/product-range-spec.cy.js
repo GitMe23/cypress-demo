@@ -131,18 +131,30 @@ describe('Navigation to Specific Product Range', () => {
 
 
     describe('Fetching content from a website', () => {
-      it.only('should log content of each <span class="visually-hidden">', () => {
-        cy.visit('https://downloads.focusrite.com/focusrite/clarett');
-    
+      it('should log content of each <span class="visually-hidden">', () => {
+        cy.visit('https://downloads.focusrite.com');
         // Select all elements with class "visually-hidden"
-        cy.get('span.visually-hidden').each(($span) => {
-          // Log the text content of each span
-          cy.log($span.text());
+        cy.getTileNames
         });
       });
     });
 
+    describe('Fetching tiles from a website', () => {
+      beforeEach(() => {
+        // Visit the base URL before each test
+        cy.visit('/');
+      });
+      it.only('should log each tile span name', () => {
+        // Use the custom command to get tile names
+        cy.getTileNames().then((tiles) => {
+          // Log each element of the array
+          tiles.forEach((tile) => {
+            cy.log(tile);
+              });
+              // You can use 'tiles' for further assertions or actions
+            });
+          });
+        });
     
-  });
 
 

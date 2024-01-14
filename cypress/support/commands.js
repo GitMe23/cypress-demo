@@ -42,6 +42,16 @@ Cypress.Commands.add('getProductRangePath', (productRange) => {
     });
 });
   
+Cypress.Commands.add('getTileNames', () => {
+    const tiles = [];
+    cy.get('div.tile div.range div.logo.range-logo a.main-link span.visually-hidden').each(($span) => {
+      tiles.push($span.text());
+    }).then(() => {
+      return tiles;
+    });
+  });
+
   
+    
   
 
