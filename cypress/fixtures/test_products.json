@@ -80,17 +80,6 @@
       "Clarett+ Octopre"
     ]
   },
-  "Clarett": {
-    "path": "/focusrite/clarett-0",
-    "products": [
-      "Clarett 2Pre",
-      "Clarett 4Pre",
-      "Clarett 8Pre",
-      "Clarett 8PreX",
-      "Clarett OctoPre"
-    ]
-  },
-  {
     "Saffire": {
       "path": "/focusrite/saffire",
       "products": [
@@ -105,13 +94,4 @@
         "OctoPre MKII Dynamic"
       ]
     }
-  },
-  {
-    "Focusrite Plugins": {
-      "path": "/focusrite/focusrite-plug-ins-0",
-      "products": [
-        "Red Plug-In Suite"
-      ]
-    }
   }
-}

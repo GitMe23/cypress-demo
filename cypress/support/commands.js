@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('getProductRanges', () => {
-    cy.readFile('test_data/focusrite_products_example.json').then((products) => {
+    cy.fixture('../fixtures/test_products.json').then((data) => {
         const ranges = Object.keys(products);
         return ranges;
     })
@@ -37,23 +37,30 @@ Cypress.Commands.add('getClickableTile', { prevSubject: 'element' }, (subject) =
 });
 
 Cypress.Commands.add('getProductRangePath', (productRange) => {
-    return cy.readFile('test_data/focusrite_products_example.json').then((products) => {
+    return cy.readFile('test_data/zextended.json').then((products) => {
       return products[productRange].path;
     });
 });
   
 Cypress.Commands.add('getPageProductRanges', () => {
     const tiles = [];
-    cy.get('div.tile div.range div.logo.range-logo a.main-link span.visually-hidden')
-      .not(':contains("Legacy")')
+    cy.get('div.tile div.range div.logo.range-logo a.main-link span.visually-hidden, div.tile div.range div.logo-text.range-logo a.main-link span.visually-hidden')
+      .filter(':not(:contains("Legacy"))')
       .each(($span) => {
-        tiles.push($span.text());
+        const modifiedProductRanges = $span.text().replace(/(?<!\S)Clarett(?! \+| USB)(?!\S)/g, 'Clarett 0');
+        tiles.push(modifiedProductRanges);
       })
       .then(() => {
         return tiles;
       });
   });
   
+  
+  Cypress.Commands.add('loadTestProductRanges', () => {
+    return cy.fixture('../fixtures/test_products.json').then((data) => {
+      return Object.keys(data);
+    });
+  });
 
   
     

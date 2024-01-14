@@ -79,5 +79,35 @@
       "Clarett+ 8Pre",
       "Clarett+ Octopre"
     ]
+  },
+  "Clarett 0": {
+    "path": "/focusrite/clarett-0",
+    "products": [
+      "Clarett 2Pre",
+      "Clarett 4Pre",
+      "Clarett 8Pre",
+      "Clarett 8PreX",
+      "Clarett OctoPre"
+    ]
+  },
+    "Saffire": {
+      "path": "/focusrite/saffire",
+      "products": [
+        "Saffire 6 USB",
+        "Saffire Pro 14",
+        "Saffire Pro 24",
+        "Saffire Pro 24 DSP",
+        "Saffire Pro 26",
+        "Saffire Pro 40",
+        "Liquid Saffire 56",
+        "OctoPre MKII",
+        "OctoPre MKII Dynamic"
+      ]
+    },
+    "Focusrite Plugins": {
+      "path": "/focusrite/focusrite-plug-ins-0",
+      "products": [
+        "Red Plug-In Suite"
+      ]
+    }
   }
-}

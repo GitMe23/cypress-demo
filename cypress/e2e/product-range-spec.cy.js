@@ -6,7 +6,7 @@ describe("The 'Focusrite Downloads' page", () => {
   let productRanges;
 
   before(() => {
-    cy.getProductRanges().then((ranges) => {
+    cy.loadTestProductRanges().then((ranges) => {
       productRanges = ranges;
     });
   });
@@ -21,7 +21,7 @@ describe("The 'Focusrite Downloads' page", () => {
       .should('be.visible');
   });
 
-  it.only("makes product ranges visible", () => {
+  it("makes product ranges visible", () => {
     productRanges.forEach(productRange => {
       cy.contains('.tile', productRange).should('be.visible');
     });
@@ -35,7 +35,7 @@ describe("The 'Focusrite Downloads' page", () => {
     });
   });
   
-  it("displays an image for each product range", () => {
+  it("displays an image for a given product range", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile() 
@@ -45,7 +45,7 @@ describe("The 'Focusrite Downloads' page", () => {
     });
   });
 
-  it("displays a logo or text for every product range", () => {
+  it("displays a logo or text for a given product range", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
@@ -56,7 +56,7 @@ describe("The 'Focusrite Downloads' page", () => {
       });
     });
   
-    it("allows clicking on an image, logo, or text for every product range", () => {
+    it("allows clicking on an image, logo, or text", () => {
       productRanges.forEach(productRange => {
         cy.get(`:contains("${productRange}")`)
           .getClickableTile()
@@ -76,11 +76,12 @@ describe("The 'Focusrite Downloads' page", () => {
   });
   
 
+
 describe('Navigation to Specific Product Range', () => {
   let productRanges;
 
   before(() => {
-    cy.getProductRanges().then((ranges) => {
+    cy.loadTestProductRanges().then((ranges) => {
       productRanges = ranges;
     });
   });
@@ -129,21 +130,29 @@ describe('Navigation to Specific Product Range', () => {
       });
     });
 
-    describe('Fetching product ranges', () => {
-      beforeEach(() => {
-        // Visit the base URL before each test
-        cy.visit('/');
-      });
-      it.only('should log each tile span name', () => {
-        // Use the custom command to get tile names
-        cy.getPageProductRanges().then((tiles) => {
-          // Log each element of the array
-          tiles.forEach((tile) => {
-            cy.log(tile);
-              });
-              // You can use 'tiles' for further assertions or actions
-            });
+describe("Navigating to each 'Downloads' page", () => {
+  let productRanges;
+
+  before(() => {
+    cy.loadTestProductRanges().then((ranges) => {
+      productRanges = ranges;
+    });
+  });
+
+  beforeEach(() => {
+    cy.visit('/');
+  })
+
+  it('should log each tile span name', () => {
+    // Use the custom command to get tile names
+    cy.getPageProductRanges().then((tiles) => {
+      // Log each element of the array
+      tiles.forEach((tile) => {
+        cy.log(tile);
           });
+          // You can use 'tiles' for further assertions or actions
         });
-    
       });
+
+    });
+  });
