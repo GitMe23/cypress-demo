@@ -1,3 +1,5 @@
+// Use Case 1
+
 describe("The 'Focusrite Downloads' page", () => {
   let productRanges;
 
@@ -25,13 +27,13 @@ describe("The 'Focusrite Downloads' page", () => {
     });
   });
 
-  it("makes product ranges visible", () => {
+  it("makes all product ranges visible", () => {
     productRanges.forEach(productRange => {
       cy.contains('.tile', productRange).should('be.visible');
     });
   });
 
-  it("makes product ranges clickable", () => {
+  it("makes all product ranges clickable", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
@@ -39,7 +41,7 @@ describe("The 'Focusrite Downloads' page", () => {
     });
   });
 
-  it("displays an image for a given product range", () => {
+  it("displays an image for all product ranges", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
@@ -49,7 +51,7 @@ describe("The 'Focusrite Downloads' page", () => {
     });
   });
 
-  it("displays a logo or text for a given product range", () => {
+  it("displays a logo or text for a all product ranges", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
@@ -60,7 +62,7 @@ describe("The 'Focusrite Downloads' page", () => {
     });
   });
 
-  it("allows clicking on an image, logo, or text", () => {
+  it("allows clicking on an image, logo, or text for all ranges", () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
@@ -92,7 +94,7 @@ describe('Navigating to each downloads page (Use Case 1)', () => {
     cy.visit('/');
   });
 
-  it('links to the correct page for each product range', () => {
+  it('links to the correct product page for each product range', () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
@@ -116,34 +118,25 @@ describe('Navigating to each downloads page (Use Case 1)', () => {
     });
   });
 
-  it('displays a list of all products for a given product range', () => {
-    productRanges.forEach(productRange => {
-      cy.get(`:contains("${productRange}")`)
-        .getClickableTile()
-        .click();
-      
-        cy.fixture('../fixtures/test_products.json').then((products) => {
-          const productList = products[productRange].products;
-          // Ensure each product in test fixture is in a tile on page
-          productList.forEach((product) => {
-            cy.get(`:contains("${product}")`).should('be.visible');
-            cy.getPageTiles().should('include', product);
-          });
-        });
-      
-      cy.visit('/');
+it('displays a list of all products for a given product range', () => {
+  productRanges.forEach(productRange => {
+    cy.get(`:contains("${productRange}")`)
+      .getClickableTile()
+      .click();
+    cy.loadProductListFixture(productRange).then((productList) => {
+      // Ensure every product in test fixture is on the page
+      productList.forEach((product) => {
+        cy.get(`:contains("${product}")`).should('be.visible');
+        cy.getPageTiles().should('include', product);
+      });
     });
+    cy.visit('/');
   });
+});
 });
 
 
-// **Use Case:** As a user, I want to download the available software for my product
-
-// ### Requirements
-
-// 1. The user can navigate to the page of a specific product and view all available downloads
-// 2. All products should have downloadable software for either mac or windows
-// 3. The user can download the software for their operating system
+// Use Case 2
 
 describe('Downloading software for a given product (Use Case 2)', () => {
   let productRanges;
@@ -158,26 +151,35 @@ describe('Downloading software for a given product (Use Case 2)', () => {
     cy.visit('/');
   });
 
-  it('shows all available downloads for any product in any range', () => {
+  it('navigates to a product page and displays all available downloads', () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
         .click();
-        // citerate over all products in real domain
-        cy.clickOnAnyProductTile();
+        cy.clickOnAnyProductTile(); // iterate over all products in real domain
         cy.verifyDownloadsContentExists();
       cy.visit('/');
     });
   });
 
-  it.only('shows mac and windows downloads for any product in any range', () => {
+  it('shows mac and windows downloads for any software', () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
         .getClickableTile()
         .click();
-        // iterate over all products in real domain
-        cy.clickOnAnyProductTile();
-        cy.verifyMacAndWindowsExists();
+        cy.clickOnAnyProductTile(); // iterate over all products in real domain
+        cy.verifyMacAndWindowsDownloads();
+      cy.visit('/');
+    });
+  });
+
+  it('links to verified downloadable files', () => {
+    productRanges.forEach(productRange => {
+      cy.get(`:contains("${productRange}")`)
+        .getClickableTile()
+        .click();
+        cy.clickOnAnyProductTile(); // iterate over all products in real domain
+        cy.verifyDownloads();
       cy.visit('/');
     });
   });
