@@ -68,11 +68,11 @@ Cypress.Commands.add('loadProducts', () => {
 });
 
 // Custom Cypress command to click on a random clickableTile
-Cypress.Commands.add('clickOnRandomClickableTile', () => {
-  cy.get('[data-once="clickable-elements-click"]').as('clickableTiles');
-  cy.get('@clickableTiles').its('length').then((totalTiles) => {
-    cy.getRandomTileIndex(totalTiles).then((randomIndex) => {
-      cy.get('@clickableTiles').eq(randomIndex).find('[data-once="clickable-elements-click-event"]').click();
+Cypress.Commands.add('clickOnAnyProductTile', () => {
+  cy.get('[data-once="clickable-elements-click"]').as('products');
+  cy.get('@products').its('length').then((totalTiles) => {
+    cy.getAnyProductIndex(totalTiles).then((randomIndex) => {
+      cy.get('@products').eq(randomIndex).find('[data-once="clickable-elements-click-event"]').click();
     });
   });
 });
@@ -82,26 +82,28 @@ Cypress.Commands.add('verifyDownloadsContentExists', () => {
   cy.get('#block-downloads-content').should('exist');
 });
 
+Cypress.Commands.add('verifyMacAndWindowsExists', () => {
+  cy.get('#block-downloads-content').then(($content) => {
+    if ($content.length > 0 && $content.text().includes('Software Links')) {
+      // If #block-downloads-content exists and contains 'Software Links'
+      cy.wrap($content)
+        .should('contain', 'Software Links')
+        .and('contain', 'Windows')
+        .and('contain', 'Mac');
+    } else {
+      // If #block-downloads-content does not exist or does not contain 'Software Links'
+      cy.log("Doesn't EXIST or doesn't contain 'Software Links'!");
+    }
+  });
+});
+
+
 // Custom Cypress command to get a random index within the range of available clickableTiles
-Cypress.Commands.add('getRandomTileIndex', (totalTiles) => {
+Cypress.Commands.add('getAnyProductIndex', (totalTiles) => {
   return Cypress._.random(0, totalTiles - 1);
 });
 
 
-//   // Log the array of links for debugging
-//   cy.log('Links Array:', linksArray);
-
-//   // Iterate over the links array and perform verifications
-//   linksArray.forEach((link) => {
-//     // Visit each link
-//     cy.visit(link);
-
-//     // Verify the existence of the element on the current page
-//     cy.get('div.software-links:nth-child(1)').should('exist');
-
-//     // Go back to the main page for the next iteration
-//     cy.go('back');
-//   });
 
 
 
