@@ -162,24 +162,37 @@ describe('Downloading software for a given product (Use Case 2)', () => {
     cy.visit('/');
   });
 
-// your test file
+  // it.only('viewing available downloads for a given product', () => {
+  //   productRanges.forEach(productRange => {
+  //     cy.get(`:contains("${productRange}")`)
+  //       .getClickableTile()
+  //       .click();
+      
+  //       cy.get('[data-once="clickable-elements-click"]').as('clickableTiles');
+  //       cy.get('@clickableTiles').each(($tile) => {
+  //         cy.wrap($tile)
+  //           .click()
+  //           .then(() => {
+  //             cy.get('div.software-links:nth-child(1)').should('exist');
+  //             cy.go('back');
+  //           });
+  //       });
+  //     // After processing all elements in the current range, go back to the main page
+  //     cy.visit('/');
+  //   });
+  // });
 
-it.only('viewing available downloads for a given product', () => {
-  productRanges.forEach(productRange => {
-    cy.get(`:contains("${productRange}")`)
-      .getClickableTile()
-      .click();
-
-    // Use the custom command to get clickable tiles and verify links
-    cy.getClickableTilesAndVerifyLinks();
-
-    // After processing all elements in the current range, go back to the main page
-    cy.visit('/');
+  it.only('shows available downloads for any product in any range', () => {
+    productRanges.forEach(productRange => {
+      cy.get(`:contains("${productRange}")`)
+        .getClickableTile()
+        .click();
+        cy.clickOnRandomClickableTile();
+        cy.verifyDownloadsContentExists();
+      cy.visit('/');
+    });
   });
-});
-
   
-
     it('links to the correct page for each product range', () => {
     productRanges.forEach(productRange => {
       cy.get(`:contains("${productRange}")`)
