@@ -1,39 +1,29 @@
-# QA Engineer Interview
+# Example Cypress-JS test automation framework
 
-The purpose of these tasks is to evaluate your ability to write effective and comprehensive test cases and assess your general understanding of ensuring software product quality.
+This is an example Cypress front-end test framework that uses a web page, `downloads.focusrite.com`, for demonstration. The page contains several product ranges with downloadable content for each product in the range.
 
-You are going to be writing Cypress tests for the `downloads.focusrite.com` page. This is a page which contains all the downloadable content related to focusrite products.
-
-This is a skeleton repository which includes an example test accessing `downloads.focusrite.com` It's important to understand that while the requirements for each task are outlined, we expect you to handle edge cases, validations, and potential pitfalls.
-
-You're encouraged to use Google or any other resources you typically rely on in your daily work. For each of the tasks, aim to write one or multiple Cypress test cases which address the provided use cases.
-
-Good luck!
-
-## To run the tests
-
+## To run the tests...
+Clone the repository:
 ```bash
-npm install
-npm run cypress:open
+git clone https://github.com/GitMe23/cypress-downloads-starter.git
 ```
 
+In the same git repository, install Node package manager:
+```bash
+npm install
+```
+Run Cypress:
+```bash
+npm run cypress:open
+```
 ---
+Cypress should now open and ask you to choose a browser.<br><br>
+Click on the downloads-range-spec option to begin running the tests.
 
-## Task 1: Testing the Product Range Page
+### Example use cases...
 
-**Use Case:** As a user, I want to find my product on the downloads page
-
-### Requirements
-
-1. The user can navigate to the page of a specific product range
-2. The user can see the list of all products in the product range
-
-## Task 2: Testing the Downloads
-
-**Use Case:** As a user, I want to download the available software for my product
-
-### Requirements
-
-1. The user can navigate to the page of a specific product and view all available downloads
-2. All products should have downloadable software for either mac or windows
-3. The user can download the software for their operating system
+* The user can navigate to the page of a specific product range
+* The user can see the list of all products in the product range
+* The user can navigate to the page of a specific product and view all available downloads
+* All products should have downloadable software for either mac or windows
+* The user can download the software for their operating system
