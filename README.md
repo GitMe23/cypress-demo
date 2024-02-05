@@ -5,9 +5,8 @@ This is an example Cypress front-end test framework that uses a web page, `downl
 ## To run the tests...
 Clone the repository:
 ```bash
-git clone https://github.com/GitMe23/cypress-downloads-starter.git
+git clone https://github.com/GitMe23/cypress-demo.git
 ```
-
 In the same git repository, install Node package manager:
 ```bash
 npm install
